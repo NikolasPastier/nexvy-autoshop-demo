@@ -1,0 +1,35 @@
+{
+  "businessName": "AutoFix Bratislava",
+  "tagline": "AUTOSERVIS & PNEUSERVIS",
+  "headline": "PROFESIONÁLNY AUTOSERVIS V BRATISLAVE",
+  "subtitle": "Diagnostika · Opravy · Údržba · Pneuservis",
+  "phone": "+421 948 222 333",
+  "whatsapp": "+421948222333",
+  "email": "info@autofix-ba.sk",
+  "address": "Bajkalská 29, 821 01 Bratislava",
+  "hours": {
+    "weekdays": "7:30 – 17:30",
+    "saturday": "8:00 – 12:00",
+    "sunday": "Zatvorené"
+  },
+  "stats": [
+    { "value": "15+", "label": "ROKOV SKÚSENOSTÍ" },
+    { "value": "3 400+", "label": "SPOKOJNÝCH ZÁKAZNÍKOV" },
+    { "value": "100%", "label": "ZÁRUKA NA PRÁCU" },
+    { "value": "2h", "label": "ODPOVEĎ DO 2 HODÍN" }
+  ],
+  "brands": [
+    "ŠKODA",
+    "VOLKSWAGEN",
+    "BMW",
+    "AUDI",
+    "FORD",
+    "TOYOTA",
+    "HYUNDAI",
+    "KIA",
+    "RENAULT",
+    "PEUGEOT",
+    "OPEL",
+    "MERCEDES-BENZ"
+  ]
+}
