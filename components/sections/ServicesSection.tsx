@@ -165,7 +165,7 @@ export default function ServicesSection() {
         <div
           ref={carouselRevealRef}
           className="relative group"
-          style={{ position: 'relative', marginTop: '48px', overflow: 'visible', padding: '12px 0' }}
+          style={{ position: 'relative', marginTop: '48px', overflow: 'visible' }}
         >
           {/* Left scroll button */}
           <button
@@ -207,8 +207,10 @@ export default function ServicesSection() {
               overflowX: 'auto',
               overflowY: 'visible',
               scrollSnapType: 'x mandatory',
-              paddingTop: '12px',
-              paddingBottom: '12px',
+              paddingTop: '16px',
+              paddingBottom: '20px',
+              marginTop: '-16px',
+              marginBottom: '-20px',
               cursor: 'grab',
             }}
             onMouseEnter={(e) => {
@@ -407,8 +409,8 @@ export default function ServicesSection() {
           <div
             style={{
               position: 'absolute',
-              top: '12px',
-              bottom: '12px',
+              top: '16px',
+              bottom: '20px',
               left: 0,
               width: '60px',
               background: 'linear-gradient(to right, #080d18, transparent)',
@@ -418,8 +420,8 @@ export default function ServicesSection() {
           <div
             style={{
               position: 'absolute',
-              top: '12px',
-              bottom: '12px',
+              top: '16px',
+              bottom: '20px',
               right: 0,
               width: '60px',
               background: 'linear-gradient(to left, #080d18, transparent)',

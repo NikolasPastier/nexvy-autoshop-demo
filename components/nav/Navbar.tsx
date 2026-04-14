@@ -1,7 +1,19 @@
 'use client'
 import { Wrench } from 'lucide-react'
+import { usePathname, useRouter } from 'next/navigation'
 
 export default function Navbar() {
+  const pathname = usePathname()
+  const router = useRouter()
+
+  const handleBooking = () => {
+    if (pathname === '/') {
+      document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      router.push('/kontakt')
+    }
+  }
+
   return (
     <nav
       style={{
@@ -70,7 +82,7 @@ export default function Navbar() {
             { label: 'SLUŽBY', href: '/sluzby' },
             { label: 'STAV OPRAVY', href: '/stav-opravy' },
             { label: 'GALÉRIA', href: '/galeria' },
-            { label: 'KONTAKT', href: '#kontakt' },
+            { label: 'KONTAKT', href: '/kontakt' },
             { label: 'CENNÍK', href: '/cennik' },
           ].map((link) => (
             <a
@@ -123,8 +135,8 @@ export default function Navbar() {
           >
             +421 948 222 333
           </a>
-          <a
-            href="#booking"
+          <button
+            onClick={handleBooking}
             style={{
               background: '#1a4fff',
               borderRadius: '10px',
@@ -137,6 +149,7 @@ export default function Navbar() {
               boxShadow: '0 4px 24px rgba(26,79,255,0.4)',
               transition: 'all 0.3s ease',
               whiteSpace: 'nowrap',
+              cursor: 'pointer',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.boxShadow = '0 6px 32px rgba(26,79,255,0.6)'
@@ -148,7 +161,7 @@ export default function Navbar() {
             }}
           >
             Objednať servis
-          </a>
+          </button>
         </div>
       </div>
     </nav>
