@@ -13,10 +13,10 @@
     "sunday": "Zatvorené"
   },
   "stats": [
-    { "value": "15+", "label": "ROKOV SKÚSENOSTÍ" },
-    { "value": "3 400+", "label": "SPOKOJNÝCH ZÁKAZNÍKOV" },
-    { "value": "100%", "label": "ZÁRUKA NA PRÁCU" },
-    { "value": "2h", "label": "ODPOVEĎ DO 2 HODÍN" }
+    { "id": "stat-0", "value": "15+", "label": "ROKOV SKÚSENOSTÍ" },
+    { "id": "stat-1", "value": "3 400+", "label": "SPOKOJNÝCH ZÁKAZNÍKOV" },
+    { "id": "stat-2", "value": "100%", "label": "ZÁRUKA NA PRÁCU" },
+    { "id": "stat-3", "value": "2h", "label": "ODPOVEĎ DO 2 HODÍN" }
   ],
   "brands": [
     "ŠKODA",

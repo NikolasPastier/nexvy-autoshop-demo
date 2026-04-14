@@ -13,12 +13,18 @@ export default function StatsSection() {
       const { gsap } = await import('gsap')
       const { ScrollTrigger } = await import('gsap/ScrollTrigger')
       gsap.registerPlugin(ScrollTrigger)
-      document.querySelectorAll('.stat-number').forEach((el) => {
-        const target = el.getAttribute('data-value') || '0'
-        const isPlus = target.includes('+')
-        const isPct = target.includes('%')
-        const isH = target.includes('h')
-        const num = parseInt(target.replace(/\D/g, ''))
+
+      siteConfig.stats.forEach((stat) => {
+        const el = document.querySelector(`[data-id="${stat.id}"]`)
+        if (!el) return
+
+        const raw = stat.value
+        const suffix = raw.replace(/[\d\s]/g, '') // "+", "%", "h", etc.
+        const num = parseInt(raw.replace(/\D/g, ''))
+
+        // Set initial display immediately so it's never blank
+        el.textContent = raw
+
         const obj = { val: 0 }
         gsap.to(obj, {
           val: num,
@@ -30,9 +36,17 @@ export default function StatsSection() {
             once: true,
           },
           onUpdate: () => {
-            el.textContent =
-              Math.round(obj.val).toLocaleString('sk') +
-              (isPlus ? '+' : isPct ? '%' : isH ? 'h' : '')
+            const current = Math.round(obj.val)
+            if (stat.value.includes(' ')) {
+              // "3 400+" — preserve space-formatted number
+              el.textContent = current.toLocaleString('sk') + suffix
+            } else {
+              el.textContent = current + suffix
+            }
+          },
+          onComplete: () => {
+            // Always land on the exact original value
+            el.textContent = raw
           },
         })
       })
@@ -58,7 +72,7 @@ export default function StatsSection() {
             <div key={stat.label} className="stat-item">
               <span
                 className="stat-number"
-                data-value={stat.value}
+                data-id={stat.id}
                 style={{
                   display: 'block',
                   fontSize: '4rem',

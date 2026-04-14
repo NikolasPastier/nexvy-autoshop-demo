@@ -165,7 +165,7 @@ export default function ServicesSection() {
         <div
           ref={carouselRevealRef}
           className="relative group"
-          style={{ position: 'relative', marginTop: '48px', overflow: 'visible' }}
+          style={{ position: 'relative', marginTop: '48px', overflow: 'visible', paddingBottom: '20px', marginBottom: '-20px' }}
         >
           {/* Left scroll button */}
           <button
