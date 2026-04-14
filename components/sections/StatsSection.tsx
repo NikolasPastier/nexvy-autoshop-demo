@@ -60,21 +60,26 @@ export default function StatsSection() {
         {/* Stats row */}
         <div
           style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-            gap: '32px',
+            display: 'flex',
+            flexWrap: 'nowrap',
+            justifyContent: 'center',
+            alignItems: 'flex-start',
+            gap: '48px',
+            padding: '0 24px',
+            overflowX: 'auto',
             maxWidth: '900px',
             margin: '0 auto 48px',
             textAlign: 'center',
           }}
         >
           {siteConfig.stats.map((stat) => (
-            <div key={stat.label} className="stat-item">
+            <div key={stat.label} className="stat-item" style={{ minWidth: '200px', flex: 1 }}>
               <span
                 className="stat-number"
                 data-id={stat.id}
                 style={{
                   display: 'block',
+                  whiteSpace: 'nowrap',
                   fontSize: '4rem',
                   fontWeight: 900,
                   lineHeight: 1,
@@ -90,6 +95,8 @@ export default function StatsSection() {
               </span>
               <span
                 style={{
+                  display: 'block',
+                  whiteSpace: 'nowrap',
                   color: 'rgba(255,255,255,0.4)',
                   fontSize: '0.75rem',
                   letterSpacing: '0.1em',

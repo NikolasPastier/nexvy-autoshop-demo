@@ -1,107 +1,119 @@
 'use client'
 import { useState } from 'react'
+import type { ComponentType, CSSProperties } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import AutoScroll from 'embla-carousel-auto-scroll'
-import {
-  SiSkoda,
-  SiVolkswagen,
-  SiBmw,
-  SiAudi,
-  SiFord,
-  SiToyota,
-  SiHyundai,
-  SiKia,
-  SiRenault,
-  SiPeugeot,
-  SiOpel,
-} from '@icons-pack/react-simple-icons'
+import * as SimpleIcons from '@icons-pack/react-simple-icons'
 import { Car } from 'lucide-react'
-import type { ComponentType, SVGProps } from 'react'
 
-type IconComp = ComponentType<SVGProps<SVGSVGElement> & { size?: number; color?: string }>
+type IconComp = ComponentType<{ size?: number; style?: CSSProperties }>
 
-// Brand icon + color map — keys match site-config.json brands array (uppercase)
-const brandData: Record<string, { Icon: IconComp; color: string }> = {
-  'ŠKODA':         { Icon: SiSkoda as IconComp,      color: '#4ba82e' },
-  'VOLKSWAGEN':    { Icon: SiVolkswagen as IconComp,  color: '#001e50' },
-  'BMW':           { Icon: SiBmw as IconComp,         color: '#0066b1' },
-  'AUDI':          { Icon: SiAudi as IconComp,        color: '#bb0a14' },
-  'FORD':          { Icon: SiFord as IconComp,        color: '#003478' },
-  'TOYOTA':        { Icon: SiToyota as IconComp,      color: '#eb0a1e' },
-  'HYUNDAI':       { Icon: SiHyundai as IconComp,     color: '#002c5f' },
-  'KIA':           { Icon: SiKia as IconComp,         color: '#05141f' },
-  'RENAULT':       { Icon: SiRenault as IconComp,     color: '#efdf00' },
-  'PEUGEOT':       { Icon: SiPeugeot as IconComp,     color: '#003189' },
-  'OPEL':          { Icon: SiOpel as IconComp,        color: '#d52b1e' },
-  'MERCEDES-BENZ': { Icon: Car as IconComp,           color: '#00adef' },
+// Resolve icon by name at runtime — falls back to Car if the icon doesn't exist
+const getIcon = (name: string): IconComp => {
+  const si = SimpleIcons as unknown as Record<string, IconComp | undefined>
+  return si[name] ?? (Car as IconComp)
 }
 
+// Internal brand data — SiMercedes doesn't exist in the package, falls back to Car via getIcon
+const BRANDS = [
+  { iconName: 'SiSkoda',      name: 'Škoda',        color: '#4ba82e' },
+  { iconName: 'SiVolkswagen', name: 'Volkswagen',   color: '#001e50' },
+  { iconName: 'SiBmw',        name: 'BMW',           color: '#0066b1' },
+  { iconName: 'SiAudi',       name: 'Audi',          color: '#bb0a14' },
+  { iconName: 'SiFord',       name: 'Ford',          color: '#003478' },
+  { iconName: 'SiToyota',     name: 'Toyota',        color: '#eb0a1e' },
+  { iconName: 'SiHyundai',    name: 'Hyundai',       color: '#002c5f' },
+  { iconName: 'SiKia',        name: 'Kia',           color: '#05141f' },
+  { iconName: 'SiRenault',    name: 'Renault',       color: '#efdf00' },
+  { iconName: 'SiPeugeot',    name: 'Peugeot',       color: '#003189' },
+  { iconName: 'SiOpel',       name: 'Opel',          color: '#d52b1e' },
+  { iconName: 'SiMercedes',   name: 'Mercedes-Benz', color: '#00adef' },
+]
+
+// Per-item component so each manages its own hover state independently
+const BrandItem = ({
+  IconComponent,
+  brand,
+  isRenault,
+}: {
+  IconComponent: IconComp
+  brand: { name: string; color: string }
+  isRenault: boolean
+}) => {
+  const [hovered, setHovered] = useState(false)
+
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        flexShrink: 0,
+        padding: '0 36px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '10px',
+        cursor: 'default',
+        transform: hovered ? 'translateY(-5px)' : 'translateY(0)',
+        transition: 'transform 0.3s ease',
+      }}
+    >
+      <IconComponent
+        size={40}
+        style={{
+          color: brand.color,
+          opacity: hovered ? 1 : (isRenault ? 0.5 : 0.35),
+          filter: hovered ? `drop-shadow(0 0 12px ${brand.color}88)` : 'none',
+          transition: 'opacity 0.3s ease, filter 0.3s ease',
+          display: 'block',
+          flexShrink: 0,
+        }}
+      />
+      <span
+        style={{
+          fontSize: '12px',
+          fontWeight: 700,
+          letterSpacing: '0.1em',
+          textTransform: 'uppercase',
+          whiteSpace: 'nowrap',
+          color: hovered ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.3)',
+          transition: 'color 0.3s ease',
+        }}
+      >
+        {brand.name}
+      </span>
+    </div>
+  )
+}
+
+// brands prop kept for API compatibility — internal BRANDS data is used instead
 interface Props {
   brands: string[]
 }
 
-export default function BrandCarousel({ brands }: Props) {
+export default function BrandCarousel({ brands: _ }: Props) {
   const [emblaRef] = useEmblaCarousel({ loop: true }, [
     AutoScroll({ playOnInit: true, speed: 1 }),
   ])
-  const [hovered, setHovered] = useState<string | null>(null)
 
   return (
-    <div style={{ position: 'relative', overflow: 'hidden' }}>
-      <div ref={emblaRef} style={{ overflow: 'hidden' }}>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          {brands.map((b) => {
-            const { Icon, color: brandHex } = brandData[b] ?? { Icon: Car as IconComp, color: '#1a4fff' }
-            const isHov = hovered === b
-            // Renault yellow is hard to see at 0.35 — use 0.5 as default
-            const defaultOpacity = b === 'RENAULT' ? 0.5 : 0.35
-            // Renault also gets extra glow on hover so it reads on dark bg
-            const hoverFilter = b === 'RENAULT'
-              ? `drop-shadow(0 0 12px ${brandHex}66) drop-shadow(0 0 8px rgba(239,223,0,0.4))`
-              : `drop-shadow(0 0 12px ${brandHex}66)`
-
-            return (
-              <div
-                key={b}
-                style={{
-                  flexShrink: 0,
-                  padding: '0 36px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '10px',
-                  cursor: 'default',
-                  transform: isHov ? 'translateY(-5px)' : 'translateY(0)',
-                  transition: 'transform 0.3s ease',
-                }}
-                onMouseEnter={() => setHovered(b)}
-                onMouseLeave={() => setHovered(null)}
-              >
-                <Icon
-                  size={40}
-                  style={{
-                    fill: brandHex,
-                    color: brandHex,
-                    opacity: isHov ? 1 : defaultOpacity,
-                    filter: isHov ? hoverFilter : 'none',
-                    flexShrink: 0,
-                    transition: 'all 0.3s ease',
-                  }}
+    <div style={{ position: 'relative' }}>
+      {/* Vertical buffer — allows hover lift to be visible above/below */}
+      <div style={{ paddingTop: '12px', paddingBottom: '12px', marginTop: '-12px', marginBottom: '-12px' }}>
+        {/* overflow:hidden clips horizontal scroll for embla; paddingTop/Bottom gives 16px vertical room */}
+        <div style={{ overflow: 'hidden', paddingTop: '16px', paddingBottom: '16px' }}>
+          <div ref={emblaRef}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              {BRANDS.map((brand) => (
+                <BrandItem
+                  key={brand.name}
+                  IconComponent={getIcon(brand.iconName)}
+                  brand={brand}
+                  isRenault={brand.name === 'Renault'}
                 />
-                <span
-                  style={{
-                    fontSize: '12px',
-                    fontWeight: 700,
-                    letterSpacing: '0.12em',
-                    color: isHov ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.3)',
-                    whiteSpace: 'nowrap',
-                    transition: 'color 0.3s ease',
-                  }}
-                >
-                  {b}
-                </span>
-              </div>
-            )
-          })}
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
