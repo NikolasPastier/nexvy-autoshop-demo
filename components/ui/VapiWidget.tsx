@@ -1,9 +1,16 @@
 'use client'
 import { useState } from 'react'
 import { Phone, MessageCircle } from 'lucide-react'
+import Vapi from '@vapi-ai/web'
+
+const vapi = new Vapi('3d6a3064-b902-4498-93d6-10672e7c175f')
 
 export default function VapiWidget() {
   const [panelOpen, setPanelOpen] = useState(false)
+
+  const handleVapiCall = async () => {
+    await vapi.start('6a715101-ebcd-4e5a-b853-791c67a9d49f')
+  }
 
   return (
     <div
@@ -79,7 +86,7 @@ export default function VapiWidget() {
           </p>
 
           <button
-            onClick={() => alert('Vapi AI hovor — nakonfigurujte váš Vapi API kľúč')}
+            onClick={handleVapiCall}
             style={{
               width: '100%',
               background: '#1a4fff',
