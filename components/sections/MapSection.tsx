@@ -72,10 +72,19 @@ export default function MapSection() {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                color: '#1a4fff',
+                color: '#4d80ff',
                 fontSize: '0.875rem',
                 fontWeight: 600,
                 textDecoration: 'none',
+                transition: 'all 0.3s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = '#60a5fa'
+                e.currentTarget.style.textShadow = '0 0 16px rgba(96,165,250,0.5)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = '#4d80ff'
+                e.currentTarget.style.textShadow = 'none'
               }}
             >
               Navigovať →

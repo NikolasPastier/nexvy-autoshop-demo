@@ -45,7 +45,12 @@ export default function Footer() {
             >
               <Wrench size={20} color="#1a4fff" />
               <span style={{ fontSize: '1.1rem', fontWeight: 700, color: '#ffffff' }}>
-                AUTOFIX<span style={{ color: '#1a4fff' }}>BA</span>
+                AUTOFIX<span style={{
+                  background: 'linear-gradient(90deg, #60a5fa, #1a4fff)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}>BA</span>
               </span>
             </a>
             <p
@@ -87,9 +92,12 @@ export default function Footer() {
               style={{
                 fontSize: '11px',
                 letterSpacing: '0.12em',
-                color: '#1a4fff',
                 fontWeight: 700,
                 marginBottom: '20px',
+                background: 'linear-gradient(90deg, #60a5fa 0%, #1a4fff 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
               }}
             >
               NAŠE SLUŽBY
@@ -122,9 +130,12 @@ export default function Footer() {
               style={{
                 fontSize: '11px',
                 letterSpacing: '0.12em',
-                color: '#1a4fff',
                 fontWeight: 700,
                 marginBottom: '20px',
+                background: 'linear-gradient(90deg, #60a5fa 0%, #1a4fff 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
               }}
             >
               KONTAKT
@@ -177,9 +188,12 @@ export default function Footer() {
               style={{
                 fontSize: '11px',
                 letterSpacing: '0.12em',
-                color: '#1a4fff',
                 fontWeight: 700,
                 marginBottom: '20px',
+                background: 'linear-gradient(90deg, #60a5fa 0%, #1a4fff 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
               }}
             >
               OTVÁRACIE HODINY
@@ -208,9 +222,12 @@ export default function Footer() {
                 style={{
                   fontSize: '11px',
                   letterSpacing: '0.12em',
-                  color: '#1a4fff',
                   fontWeight: 700,
                   marginBottom: '14px',
+                  background: 'linear-gradient(90deg, #60a5fa 0%, #1a4fff 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
                 }}
               >
                 RÝCHLE ODKAZY

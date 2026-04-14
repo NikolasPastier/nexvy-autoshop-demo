@@ -61,11 +61,15 @@ export default function StatsSection() {
                 data-value={stat.value}
                 style={{
                   display: 'block',
-                  color: '#1a4fff',
                   fontSize: '4rem',
                   fontWeight: 900,
                   lineHeight: 1,
                   marginBottom: '8px',
+                  background: 'linear-gradient(135deg, #60a5fa 0%, #1a4fff 60%, #3b82f6 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  filter: 'drop-shadow(0 0 20px rgba(26,79,255,0.4))',
                 }}
               >
                 {stat.value}
@@ -89,11 +93,14 @@ export default function StatsSection() {
           <p
             style={{
               textAlign: 'center',
-              color: '#1a4fff',
               fontSize: '11px',
               letterSpacing: '0.15em',
               fontWeight: 700,
               marginBottom: '24px',
+              background: 'linear-gradient(90deg, #60a5fa 0%, #1a4fff 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
             }}
           >
             PRACUJEME SO VŠETKÝMI ZNAČKAMI

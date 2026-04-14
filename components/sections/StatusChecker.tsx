@@ -35,14 +35,20 @@ export default function StatusChecker() {
               backdropFilter: 'blur(8px)',
               borderRadius: '999px',
               padding: '6px 16px',
-              fontSize: '11px',
-              fontWeight: 700,
-              letterSpacing: '0.15em',
-              color: 'rgba(255,255,255,0.7)',
               marginBottom: '20px',
             }}
           >
-            STAV VÁŠHO AUTA
+            <span style={{
+              fontSize: '11px',
+              fontWeight: 700,
+              letterSpacing: '0.15em',
+              background: 'linear-gradient(90deg, #60a5fa 0%, #1a4fff 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}>
+              STAV VÁŠHO AUTA
+            </span>
           </div>
 
           <h2

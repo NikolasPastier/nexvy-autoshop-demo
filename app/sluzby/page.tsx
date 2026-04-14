@@ -141,14 +141,20 @@ export default function SluzbyPage() {
               backdropFilter: 'blur(8px)',
               borderRadius: '999px',
               padding: '6px 16px',
-              fontSize: '11px',
-              fontWeight: 700,
-              letterSpacing: '0.15em',
-              color: 'rgba(255,255,255,0.7)',
               marginBottom: '20px',
             }}
           >
-            NAŠE SLUŽBY
+            <span style={{
+              fontSize: '11px',
+              fontWeight: 700,
+              letterSpacing: '0.15em',
+              background: 'linear-gradient(90deg, #60a5fa 0%, #1a4fff 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}>
+              NAŠE SLUŽBY
+            </span>
           </div>
           <h1
             style={{
@@ -225,12 +231,18 @@ export default function SluzbyPage() {
                       border: '1px solid rgba(26,79,255,0.3)',
                       borderRadius: '999px',
                       padding: '5px 12px',
-                      fontSize: '12px',
-                      fontWeight: 700,
-                      color: '#1a4fff',
                     }}
                   >
-                    {s.price}
+                    <span style={{
+                      fontSize: '12px',
+                      fontWeight: 700,
+                      background: 'linear-gradient(90deg, #60a5fa, #1a4fff)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}>
+                      {s.price}
+                    </span>
                   </div>
 
                   <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>

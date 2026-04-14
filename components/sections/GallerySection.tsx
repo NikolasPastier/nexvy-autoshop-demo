@@ -49,14 +49,20 @@ export default function GallerySection() {
               backdropFilter: 'blur(8px)',
               borderRadius: '999px',
               padding: '6px 16px',
-              fontSize: '11px',
-              fontWeight: 700,
-              letterSpacing: '0.15em',
-              color: 'rgba(255,255,255,0.7)',
               marginBottom: '20px',
             }}
           >
-            NAŠA PRÁCA
+            <span style={{
+              fontSize: '11px',
+              fontWeight: 700,
+              letterSpacing: '0.15em',
+              background: 'linear-gradient(90deg, #60a5fa 0%, #1a4fff 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}>
+              NAŠA PRÁCA
+            </span>
           </div>
           <h2
             style={{
@@ -89,10 +95,19 @@ export default function GallerySection() {
             href="/galeria"
             style={{
               display: 'inline-block',
-              color: '#1a4fff',
+              color: '#4d80ff',
               textDecoration: 'none',
               fontSize: '0.9rem',
               fontWeight: 600,
+              transition: 'all 0.3s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = '#60a5fa'
+              e.currentTarget.style.textShadow = '0 0 16px rgba(96,165,250,0.5)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = '#4d80ff'
+              e.currentTarget.style.textShadow = 'none'
             }}
           >
             Viac fotiek →
@@ -166,7 +181,10 @@ export default function GallerySection() {
                     fontSize: '11px',
                     fontWeight: 700,
                     letterSpacing: '0.12em',
-                    color: '#1a4fff',
+                    background: 'linear-gradient(90deg, #60a5fa 0%, #1a4fff 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
                     marginBottom: '12px',
                   }}
                 >

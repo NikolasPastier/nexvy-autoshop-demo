@@ -95,14 +95,20 @@ export default function ServicesSection() {
               backdropFilter: 'blur(8px)',
               borderRadius: '999px',
               padding: '6px 16px',
-              fontSize: '11px',
-              fontWeight: 700,
-              letterSpacing: '0.15em',
-              color: 'rgba(255,255,255,0.7)',
               marginBottom: '20px',
             }}
           >
-            PORTFÓLIO SLUŽIEB
+            <span style={{
+              fontSize: '11px',
+              fontWeight: 700,
+              letterSpacing: '0.15em',
+              background: 'linear-gradient(90deg, #60a5fa 0%, #1a4fff 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}>
+              PORTFÓLIO SLUŽIEB
+            </span>
           </div>
           <h2
             style={{
@@ -136,10 +142,19 @@ export default function ServicesSection() {
             style={{
               display: 'inline-block',
               marginTop: '12px',
-              color: '#1a4fff',
+              color: '#4d80ff',
               textDecoration: 'none',
               fontSize: '0.9rem',
               fontWeight: 600,
+              transition: 'all 0.3s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = '#60a5fa'
+              e.currentTarget.style.textShadow = '0 0 16px rgba(96,165,250,0.5)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = '#4d80ff'
+              e.currentTarget.style.textShadow = 'none'
             }}
           >
             Všetky služby a cenník →
@@ -150,7 +165,7 @@ export default function ServicesSection() {
         <div
           ref={carouselRevealRef}
           className="relative group"
-          style={{ position: 'relative', marginTop: '48px' }}
+          style={{ position: 'relative', marginTop: '48px', overflow: 'visible', padding: '12px 0' }}
         >
           {/* Left scroll button */}
           <button
@@ -190,8 +205,10 @@ export default function ServicesSection() {
               display: 'flex',
               gap: '20px',
               overflowX: 'auto',
+              overflowY: 'visible',
               scrollSnapType: 'x mandatory',
-              paddingBottom: '8px',
+              paddingTop: '12px',
+              paddingBottom: '12px',
               cursor: 'grab',
             }}
             onMouseEnter={(e) => {
@@ -246,12 +263,18 @@ export default function ServicesSection() {
                       border: '1px solid rgba(26,79,255,0.3)',
                       borderRadius: '999px',
                       padding: '4px 10px',
-                      fontSize: '11px',
-                      fontWeight: 700,
-                      color: '#1a4fff',
                     }}
                   >
-                    {s.price}
+                    <span style={{
+                      fontSize: '11px',
+                      fontWeight: 700,
+                      background: 'linear-gradient(90deg, #60a5fa, #1a4fff)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}>
+                      {s.price}
+                    </span>
                   </div>
 
                   {/* Icon tile */}
@@ -315,9 +338,18 @@ export default function ServicesSection() {
                       href="#booking"
                       style={{
                         fontSize: '0.8rem',
-                        color: '#1a4fff',
+                        color: '#4d80ff',
                         textDecoration: 'none',
                         fontWeight: 600,
+                        transition: 'all 0.3s ease',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = '#60a5fa'
+                        e.currentTarget.style.textShadow = '0 0 16px rgba(96,165,250,0.5)'
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = '#4d80ff'
+                        e.currentTarget.style.textShadow = 'none'
                       }}
                     >
                       Objednať →
@@ -375,8 +407,8 @@ export default function ServicesSection() {
           <div
             style={{
               position: 'absolute',
-              top: 0,
-              bottom: '8px',
+              top: '12px',
+              bottom: '12px',
               left: 0,
               width: '60px',
               background: 'linear-gradient(to right, #080d18, transparent)',
@@ -386,8 +418,8 @@ export default function ServicesSection() {
           <div
             style={{
               position: 'absolute',
-              top: 0,
-              bottom: '8px',
+              top: '12px',
+              bottom: '12px',
               right: 0,
               width: '60px',
               background: 'linear-gradient(to left, #080d18, transparent)',

@@ -147,11 +147,15 @@ function CategorySection({ cat, index }: { cat: typeof categories[0]; index: num
               </span>
               <span
                 style={{
-                  color: '#1a4fff',
+                  background: 'linear-gradient(90deg, #60a5fa, #1a4fff)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
                   fontWeight: 700,
                   fontSize: '0.95rem',
                   minWidth: '70px',
                   textAlign: 'right',
+                  display: 'inline-block',
                 }}
               >
                 {s.price}
@@ -222,14 +226,20 @@ export default function CennikPage() {
               backdropFilter: 'blur(8px)',
               borderRadius: '999px',
               padding: '6px 16px',
-              fontSize: '11px',
-              fontWeight: 700,
-              letterSpacing: '0.15em',
-              color: 'rgba(255,255,255,0.7)',
               marginBottom: '20px',
             }}
           >
-            CENNÍK SLUŽIEB
+            <span style={{
+              fontSize: '11px',
+              fontWeight: 700,
+              letterSpacing: '0.15em',
+              background: 'linear-gradient(90deg, #60a5fa 0%, #1a4fff 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}>
+              CENNÍK SLUŽIEB
+            </span>
           </div>
           <h1
             style={{

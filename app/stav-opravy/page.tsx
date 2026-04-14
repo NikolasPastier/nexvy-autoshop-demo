@@ -132,14 +132,20 @@ export default function StavOpravyPage() {
               backdropFilter: 'blur(8px)',
               borderRadius: '999px',
               padding: '6px 16px',
-              fontSize: '11px',
-              fontWeight: 700,
-              letterSpacing: '0.15em',
-              color: 'rgba(255,255,255,0.7)',
               marginBottom: '20px',
             }}
           >
-            ONLINE SLEDOVANIE
+            <span style={{
+              fontSize: '11px',
+              fontWeight: 700,
+              letterSpacing: '0.15em',
+              background: 'linear-gradient(90deg, #60a5fa 0%, #1a4fff 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}>
+              ONLINE SLEDOVANIE
+            </span>
           </div>
           <h1
             style={{
@@ -218,9 +224,12 @@ export default function StavOpravyPage() {
                     style={{
                       fontSize: '11px',
                       letterSpacing: '0.1em',
-                      color: '#1a4fff',
                       fontWeight: 700,
                       marginBottom: '8px',
+                      background: 'linear-gradient(90deg, #60a5fa 0%, #1a4fff 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
                     }}
                   >
                     {step.label}
@@ -347,7 +356,14 @@ export default function StavOpravyPage() {
                 Zákazku sme nenašli. Zavolajte nám:{' '}
                 <a
                   href="tel:+421948222333"
-                  style={{ color: '#1a4fff', textDecoration: 'none' }}
+                  style={{
+                    textDecoration: 'none',
+                    background: 'linear-gradient(90deg, #60a5fa 0%, #1a4fff 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    fontWeight: 600,
+                  }}
                 >
                   +421 948 222 333
                 </a>

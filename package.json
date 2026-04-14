@@ -13,7 +13,9 @@
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {
+
     "@opennextjs/cloudflare": "^1.19.0",
+    "@icons-pack/react-simple-icons": "^13.11.1",
     "@tailwindcss/postcss": "^4.2.2",
     "embla-carousel-auto-scroll": "^8.0.0",
     "embla-carousel-react": "^8.0.0",
